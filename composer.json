@@ -1,0 +1,43 @@
+{
+    "name": "drupal/marvin_frontend_product",
+    "description": "Frontend related Marvin Drush commands.",
+    "type": "drupal-drush",
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "Drupal",
+        "Drush",
+        "Marvin",
+        "dev"
+    ],
+    "authors": [
+        {
+            "name": "Andor",
+            "role": "Maintainer",
+            "homepage": "https://github.com/Sweetchuck"
+        }
+    ],
+    "homepage": "https://github.com/Sweetchuck/marvin_frontend_product",
+    "support": {
+        "source": "https://github.com/Sweetchuck/marvin_frontend_product",
+        "issues": "https://github.com/Sweetchuck/marvin_frontend_product/issues"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "suggest": {
+        "drush/drush": "^13.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\marvin_frontend_product\\": "src/"
+        }
+    }
+}
