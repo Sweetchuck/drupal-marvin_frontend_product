@@ -27,7 +27,10 @@
         "sort-packages": true
     },
     "require": {
-        "php": ">=8.3"
+        "php": ">=8.4",
+        "drupal/marvin": "11.3.x-dev",
+        "drupal/marvin_frontend": "11.3.x-dev",
+        "drupal/marvin_product": "11.3.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
