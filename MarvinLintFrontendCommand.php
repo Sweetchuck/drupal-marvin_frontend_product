@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drush\Commands\marvin_frontend_product;
 
+use Drupal\marvin\ContainerInitializer;
 use Drupal\marvin\Lint\CommandEvent as LintCommandEvent;
 use Drupal\marvin\MarvinTaskDefinitionCommandTrait;
 use Drupal\marvin\ProcessFactoryInterface;
@@ -18,6 +19,7 @@ use Drush\Commands\AutowireTrait;
 use Drush\Config\DrushConfig;
 use League\Container\ContainerAwareInterface;
 use League\Container\ContainerAwareTrait;
+use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Robo\Collection\Tasks as ForEachTaskLoader;
 use Robo\Contract\BuilderAwareInterface;
@@ -42,7 +44,9 @@ final class MarvinLintFrontendCommand extends Command implements
   ContainerAwareInterface
 {
 
-  use AutowireTrait;
+  use AutowireTrait {
+    create as protected autowireCreate;
+  }
   use ContainerAwareTrait;
   use TaskAccessor;
   use BaseTaskLoader;
@@ -53,6 +57,15 @@ final class MarvinLintFrontendCommand extends Command implements
   use MarvinTaskDefinitionCommandTrait;
 
   public const string NAME = 'marvin:lint:frontend';
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container): self {
+    ContainerInitializer::initialize($container);
+
+    return self::autowireCreate($container);
+  }
 
   public function __construct(
     #[Autowire('config')]
